@@ -43,6 +43,16 @@ t.test(data$TAQ_STRANGER_PRE, data$TAQ_STRANGER_POST, paired=T)
 t.test(data$MSP_PRE, data$MSP_POST, paired=T)
 t.test(data$STAI_PRE, data$STAI_POST, paired=T)
 
+unadj.p.values <- c(t.test(data$TAQ_PARTNER_PRE, data$TAQ_PARTNER_POST, paired=T)$p.value,
+                    t.test(data$TAQ_FAMILY_PRE, data$TAQ_FAMILY_POST, paired=T)$p.value,
+                    t.test(data$TAQ_SAMESEX_PRE, data$TAQ_SAMESEX_POST, paired=T)$p.value,
+                    t.test(data$TAQ_OPPSEX_PRE, data$TAQ_OPPSEX_POST, paired=T)$p.value,
+                    t.test(data$TAQ_STRANGER_PRE, data$TAQ_STRANGER_POST, paired=T)$p.value,
+                    t.test(data$MSP_PRE, data$MSP_POST, paired=T)$p.value,
+                    t.test(data$STAI_PRE, data$STAI_POST, paired=T)$p.value)
+
+p.adjust(unadj.p.values, method="BH")
+
 effsize::cohen.d(d=data$TAQ_PARTNER_POST, f=data$TAQ_PARTNER_PRE, paired=T, data=data)
 effsize::cohen.d(d=data$TAQ_FAMILY_POST, f=data$TAQ_FAMILY_PRE, paired=T, data=data)
 effsize::cohen.d(d=data$TAQ_SAMESEX_POST, f=data$TAQ_SAMESEX_PRE, paired=T, data=data)

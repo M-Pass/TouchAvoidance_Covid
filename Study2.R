@@ -106,6 +106,16 @@ t.test(Pre$TAQ_STRANGER_PRE, Post$TAQ_STRANGER_POST)
 t.test(Pre$MSP_PRE, Post$MSP_POST)
 t.test(Pre$STAI_PRE, Post$STAI_POST)
 
+unadj.p.values <- c(t.test(Pre$TAQ_PARTNER_PRE, Post$TAQ_PARTNER_POST)$p.value,
+                    t.test(Pre$TAQ_FAMILY_PRE, Post$TAQ_FAMILY_POST)$p.value,
+                    t.test(Pre$TAQ_SAMESEX_PRE, Post$TAQ_SAMESEX_POST)$p.value,
+                    t.test(Pre$TAQ_OPPSEX_PRE, Post$TAQ_OPPSEX_POST)$p.value,
+                    t.test(Pre$TAQ_STRANGER_PRE, Post$TAQ_STRANGER_POST)$p.value,
+                    t.test(Pre$MSP_PRE, Post$MSP_POST)$p.value,
+                    t.test(Pre$STAI_PRE, Post$STAI_POST)$p.value)
+
+p.adjust(unadj.p.values, method="BH")
+
 effsize::cohen.d(Pre$TAQ_PARTNER_PRE, Post$TAQ_PARTNER_POST, na.rm=T)
 effsize::cohen.d(Pre$TAQ_FAMILY_PRE, Post$TAQ_FAMILY_POST, na.rm=T)
 effsize::cohen.d(Pre$TAQ_SAMESEX_PRE, Post$TAQ_SAMESEX_POST, na.rm=T)
